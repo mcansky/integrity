@@ -49,7 +49,7 @@ module Integrity
       @projects = authorized? ? Project.all : Project.all(:public => true)
       show :home, :title => "projects"
     end
-    
+
     get "/projects" do
       @projects = authorized? ? Project.all : Project.all(:public => true)
       show :home, :title => "projects"
@@ -130,6 +130,11 @@ module Integrity
       redirect build_url(@build).to_s
     end
 
+    post "/:project/push" do
+      login_required
+      @build = current_project.build("HEAD")
+    end
+
     post "/:project/builds" do
       login_required
 
@@ -157,6 +162,6 @@ module Integrity
       current_build.destroy!
       redirect url
     end
-    
+
   end
 end
