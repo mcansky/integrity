@@ -19,3 +19,4 @@ builds
 public/integrity.css
 Gemfile.lock
 .bundle/
+bundled_gems
