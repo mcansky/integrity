@@ -16,6 +16,7 @@ Integrity.configure do |c|
   c.directory    "builds"
   c.base_url     "http://integrity.arbousier.info"
   c.log          "integrity.log"
+  c.github        "TOKEN"
   c.build_all!
   c.builder      :threaded, 5
 end
