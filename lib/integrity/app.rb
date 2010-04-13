@@ -124,6 +124,12 @@ module Integrity
       show :new, :title => ["projects", current_project.permalink, "edit"]
     end
 
+    get "/:project/push" do
+      login_required
+      @build = current_project.build("HEAD")
+      redirect build_url(@build).to_s
+    end
+
     post "/:project/builds" do
       login_required
 
