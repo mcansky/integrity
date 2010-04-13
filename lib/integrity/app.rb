@@ -49,6 +49,24 @@ module Integrity
       @projects = authorized? ? Project.all : Project.all(:public => true)
       show :home, :title => "projects"
     end
+    
+    get "/projects" do
+      @projects = authorized? ? Project.all : Project.all(:public => true)
+      show :home, :title => "projects"
+    end
+
+    get "/projects.xml" do
+      login_required if params["private"]
+      builder do |my_xml|
+        @projects = authorized? ? Project.all : Project.all(:public => true)
+        response["Content-Type"] = "application/xml; charset=utf-8"
+        my_xml.Projects do
+          @projects.each do |project|
+            my_xml.Project xml_opts_for_project(project)
+          end
+        end
+      end
+    end
 
     get "/login" do
       login_required
@@ -134,17 +152,5 @@ module Integrity
       redirect url
     end
     
-    get '/projects.xml' do
-      login_required if params["private"]
-      builder do |xml|
-        @projects = authorized? ? Project.all : Project.all(:public => true)
-        response["Content-Type"] = "application/xml; charset=utf-8"
-        xml.Projects do
-          @projects.each do |project|
-            xml.Project xml_opts_for_project(project)
-          end
-        end
-      end
-    end
   end
 end

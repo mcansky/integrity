@@ -19,6 +19,7 @@ gem "json", "1.1.9"
 gem "sinatra", "1.0.0"
 gem "sinatra-authorization", "1.0.0"
 gem "thin"
+gem "builder"
 
 # These are dependencies for the various notifiers. Uncomment as appropriate.
 # = Email
