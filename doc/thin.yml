@@ -1,13 +1,13 @@
 ---
 environment: production
-chdir: /usr/home/www-data/integrity
-address: 127.0.0.1
-port: 8910
+chdir: /srv/rails_hosting/thinies/integrity
+address: 92.243.9.163
+port: 4000
 rackup: config.ru
 pid: tmp/thin.pid
 log: logs/thin.log
 max_conns: 1024
 timeout: 30
 max_persistent_conns: 512
-daemonize: true
-servers: 2
+daemonize: false
+servers: 3

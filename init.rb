@@ -14,9 +14,8 @@ require "integrity"
 Integrity.configure do |c|
   c.database     "sqlite3:integrity.db"
   c.directory    "builds"
-  c.base_url     "http://ci.example.org"
+  c.base_url     "http://integrity.arbousier.info"
   c.log          "integrity.log"
-  c.github       "SECRET"
   c.build_all!
   c.builder      :threaded, 5
 end
