@@ -1,7 +1,6 @@
 module Integrity
-  module Integritray
-    module Helpers
-
+  module Helpers
+    module Xml
       def xml_opts_for_project(project)
         opts = {}
         opts['name'] = project.name
@@ -31,27 +30,6 @@ module Integrity
         else 'Unknown'
         end
       end
-
     end
-
-
-    def self.registered(app)
-      app.helpers Integritray::Helpers
-
-      app.get '/projects.xml' do
-        login_required if params["private"]
-        builder do |xml|
-          @projects = authorized? ? Project.all : Project.all(:public => true)
-          response["Content-Type"] = "application/xml; charset=utf-8"
-          xml.Projects do
-            @projects.each do |project|
-              xml.Project xml_opts_for_project(project)
-            end
-          end
-        end
-      end
-
-    end
-
-  end # Integritray
-end # Integrity
+  end
+end
