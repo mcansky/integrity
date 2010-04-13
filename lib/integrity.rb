@@ -36,7 +36,6 @@ require "integrity/app"
 require "integrity/repository"
 require "integrity/builder"
 require "integrity/builder/threaded"
-require "integrity/integritray"
 
 # TODO
 Addressable::URI.class_eval { def gsub(*a); to_s.gsub(*a); end }
