@@ -138,7 +138,7 @@ module Integrity
     post "/:project/builds" do
       login_required
 
-      @build = current_project.build("HEAD")
+      @build = current_project.build(current_build.commit.identifier)
       redirect build_url(@build).to_s
     end
 
